@@ -1,22 +1,96 @@
-// Mobile navigation
+// Current year
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
-const menuButton = document.querySelector(".menu-btn");
-const menu = document.querySelector("#menu");
 
-if (menuButton) {
-    menuButton.addEventListener("click", function () {
-        menu.classList.toggle("open");
-    });
-}
+// Dark / Light mode
+const themeToggle = document.getElementById("themeToggle");
 
-// Close mobile menu after selecting a section
+themeToggle.addEventListener("click", () => {
 
-document.querySelectorAll("#menu a").forEach(function (link) {
-    link.addEventListener("click", function () {
-        menu.classList.remove("open");
-    });
+    document.body.classList.toggle("dark-mode");
+
+    const darkMode =
+        document.body.classList.contains("dark-mode");
+
+    themeToggle.textContent =
+        darkMode ? "☀️" : "🌙";
+
+    localStorage.setItem(
+        "theme",
+        darkMode ? "dark" : "light"
+    );
 });
 
-// Automatically update copyright year
 
-document.querySelector("#year").textContent = new Date().getFullYear();
+// Restore saved theme
+const savedTheme =
+    localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+
+    document.body.classList.add("dark-mode");
+
+    themeToggle.textContent = "☀️";
+}
+
+
+// Active navigation link
+const sections =
+    document.querySelectorAll("section[id]");
+
+const navLinks =
+    document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop - 150;
+
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+            link.getAttribute("href") ===
+            `#${current}`
+        ) {
+            link.classList.add("active");
+        }
+    });
+
+});
+
+
+// Smooth navigation
+navLinks.forEach(link => {
+
+    link.addEventListener("click", function(event) {
+
+        event.preventDefault();
+
+        const target =
+            document.querySelector(
+                this.getAttribute("href")
+            );
+
+        if (target) {
+
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+    });
+
+});
