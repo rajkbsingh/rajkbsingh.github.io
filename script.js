@@ -1,41 +1,22 @@
-/* =========================================
-   MOBILE NAVIGATION
-========================================= */
+// Mobile navigation
 
 const menuButton = document.querySelector(".menu-btn");
-const navigation = document.querySelector("#navigation");
+const menu = document.querySelector("#menu");
 
-menuButton.addEventListener("click", function () {
-
-    navigation.classList.toggle("open");
-
-});
-
-
-/* =========================================
-   CLOSE MENU AFTER CLICK
-========================================= */
-
-const navigationLinks =
-    document.querySelectorAll("#navigation a");
-
-navigationLinks.forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-        navigation.classList.remove("open");
-
+if (menuButton) {
+    menuButton.addEventListener("click", function () {
+        menu.classList.toggle("open");
     });
+}
 
+// Close mobile menu after selecting a section
+
+document.querySelectorAll("#menu a").forEach(function (link) {
+    link.addEventListener("click", function () {
+        menu.classList.remove("open");
+    });
 });
 
+// Automatically update copyright year
 
-/* =========================================
-   CURRENT YEAR
-========================================= */
-
-const yearElement =
-    document.querySelector("#year");
-
-yearElement.textContent =
-    new Date().getFullYear();
+document.querySelector("#year").textContent = new Date().getFullYear();
