@@ -152,9 +152,9 @@ button {
 .hero-title {
     margin-top: 16px;
     font-family: "Manrope", sans-serif;
-    font-size: clamp(2.8rem, 6vw, 5.25rem);
-    line-height: 1.02;
-    letter-spacing: -.055em;
+    font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+    line-height: 1.18;
+    letter-spacing: -.035em;
     font-weight: 800;
     color: var(--ink);
 }
@@ -509,6 +509,80 @@ button {
     border: 1px solid var(--blue-line);
     border-radius: 5px;
     font-size: 10px;
+    font-weight: 700;
+}
+
+/* Google Scholar citation dashboard */
+.scholar-section {
+    background: var(--surface);
+}
+
+.scholar-intro,
+.scholar-note,
+.citation-match-note {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.scholar-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 24px 0 18px;
+}
+
+.scholar-metric {
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--white);
+}
+
+.scholar-metric span {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.scholar-metric strong {
+    display: block;
+    margin-top: 6px;
+    color: var(--blue);
+    font-family: "Manrope", sans-serif;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.scholar-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.scholar-footer > span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.scholar-note,
+.citation-match-note {
+    margin-top: 12px;
+    font-size: 11px;
+}
+
+.pub-citation-count {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    background: var(--blue-soft);
+    border: 1px solid var(--blue-line);
+    color: var(--blue-dark);
+    font-size: 11px;
     font-weight: 700;
 }
 
@@ -956,6 +1030,15 @@ button {
         grid-template-columns: 1fr;
     }
 
+    .scholar-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .scholar-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
     .research-grid,
     .experience-grid,
     .profiles-grid {
@@ -993,7 +1076,7 @@ button {
     }
 
     .hero-title {
-        font-size: 2.9rem;
+        font-size: 2rem;
     }
 
     .lead-paragraph {
